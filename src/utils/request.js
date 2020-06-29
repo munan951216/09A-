@@ -21,6 +21,11 @@ Server.interceptors.request.use(function(config){
 })
 // 4.使用实例对象，创建响应拦截器
 Server.interceptors.response.use(function(response){
+    // 判断接口返回来的数据
+    if(response.status==200){
+        return response.data
+    }
+    console.log(response)
     return response
 },function(error){
     return Promise.reject(error)

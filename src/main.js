@@ -8,7 +8,12 @@ import axios from "@/utils/request"
 Vue.prototype.$axios=axios
 // 引入store
 import store from "@/store/index"
+// 引入vant
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({
