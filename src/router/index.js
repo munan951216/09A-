@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-
+// 引入自定义的shop.js文件
+import shop from "./shop"
 Vue.use(Router)
 
 export default new Router({
@@ -10,6 +11,8 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
-    }
+    },
+    // ...扩展运算符
+    ...shop
   ]
 })

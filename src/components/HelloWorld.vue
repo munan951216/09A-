@@ -84,12 +84,20 @@
 </template>
 
 <script>
+import storage from "@/utils/storage"
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+
     }
+    
+  },
+  mounted(){
+    // let string="hello "
+    // let arr=[1,2,3]
+    // storage.set("test",arr,true)
   }
 }
 </script>
