@@ -13,6 +13,13 @@ import store from "@/store/index"
 // 引入vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
+// 全局路由守卫
+router.beforeEach((to,from,next)=>{
+  if(to.hasOwnProperty("meta")){
+    document.title=to.meta.title
+  }
+  next()
+})
 Vue.use(Vant);
 Vue.config.productionTip = false
 

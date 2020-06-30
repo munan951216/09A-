@@ -28,6 +28,9 @@
                 </van-field>
                 <van-button type="info" block class="jbn_btn" @click="checkForm">立即注册</van-button>
             </van-form>
+            <p class="jbn_login">
+                <router-link to="/shop/login">已有账号，立即登录</router-link>
+            </p>
         </div>
     </div>
 </template>
@@ -35,6 +38,7 @@
 <script>
 // import  "@/assets/style/reset.css";
 import AreaList from "@/utils/area.js"
+import "@/assets/style/login.css"
 export default {
     data() {
         return {
@@ -181,33 +185,5 @@ export default {
 
 <style lang="scss" scoped>
 
-#jbn_login{
-    width:90%;
-    border:0.01rem solid #ddd;
-    margin:0.5rem auto;
-    padding:0.2rem;
-    box-sizing: border-box;
-    border-radius:0.05rem;
-    .jbn_head{
-        font-size:0.4rem;
-    }
-    .jbn_inp{
-        border:0.01rem solid #f4f4f4;
-        border-radius: 0.05rem;
-        margin-top:0.4rem;
-        font-size: 0.4rem;
-        height:1rem;
-    }
-    .jbn_btn{
-      background-image: linear-gradient(90deg,#ffb821 0,#ff5c38 45%,#ff1459);
-      border: none;
-      box-shadow: 0px 3px 2px rgba($color: #000000, $alpha: .3);
-      height:1rem;
-      font-size:0.5rem;
-      outline:none;
-    }
-}
-.jbn_img{
-    width: 3rem;
-}
+
 </style>
