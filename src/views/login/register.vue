@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <van-nav-bar title="用户注册" left-arrow />
+    <div class="jbn_box">
+        <van-nav-bar title="用户注册" left-arrow  class="jbn_top"/>
         <!-- 页面布局 -->
         <div id="jbn_login">
             <van-form>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import  "@/assets/style/reset.css";
+// import  "@/assets/style/reset.css";
 import AreaList from "@/utils/area.js"
 export default {
     data() {
@@ -88,8 +88,9 @@ export default {
                  this.$toast.fail("密码跟确认密码不一致")
                 return false
             }
-            // 验证完成，注册成功
-            this.$toast.success("恭喜您，注册成功！")
+            //提交注册信息
+            this.submitRegister()
+           
         },
         // 生成图形验证码
         createImgCode(){
@@ -151,31 +152,59 @@ export default {
             })
             // 调用倒计时的方法
             this.coundSeconds()
+        },
+        // 提交注册
+        submitRegister(){
+            this.$axios({
+                url:"https://api.it120.cc/small4/user/m/register",
+                params:{
+                    mobile:this.mobeil,
+                    pwd:this.pwd,
+                    code:this.code,
+                    nick:this.nick,
+                    province:this.province,
+                    city:this.city
+                }
+            }).then(res=>{
+                console.log(res)
+                if(res.code!=0){
+                    this.$toast.fail(res.msg)
+                    return false
+                }
+                 // 验证完成，注册成功
+                this.$toast.success("恭喜您，注册成功！")
+            })
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+
 #jbn_login{
     width:90%;
-    border:1px solid #ddd;
+    border:0.01rem solid #ddd;
     margin:0.5rem auto;
     padding:0.2rem;
     box-sizing: border-box;
-    border-radius:3px;
+    border-radius:0.05rem;
     .jbn_head{
         font-size:0.4rem;
     }
     .jbn_inp{
-        border:1px solid #f4f4f4;
-        border-radius: 5px;
-        margin-top:10px;
+        border:0.01rem solid #f4f4f4;
+        border-radius: 0.05rem;
+        margin-top:0.4rem;
+        font-size: 0.4rem;
+        height:1rem;
     }
     .jbn_btn{
-        background-image: linear-gradient(90deg,#ffb821 0,#ff5c38 45%,#ff1459);
+      background-image: linear-gradient(90deg,#ffb821 0,#ff5c38 45%,#ff1459);
       border: none;
       box-shadow: 0px 3px 2px rgba($color: #000000, $alpha: .3);
+      height:1rem;
+      font-size:0.5rem;
+      outline:none;
     }
 }
 .jbn_img{

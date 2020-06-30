@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 引入rem
+import rem from "./assets/rem"
 // 引入axios实例对象
 import axios from "@/utils/request"
 Vue.prototype.$axios=axios
