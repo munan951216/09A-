@@ -42,7 +42,7 @@ export default {
         // console.log(data)
         // next()
         if(data!=null){
-            next("/")
+            next("/index")
         }else{
             next()
         }
@@ -55,8 +55,7 @@ export default {
                 // 提示错误信息
                 this.$toast.fail("手机号、密码不能为空")
                 return false
-            }
-            
+            }    
             // 手机号的正则表达式
             var reg=/^1[345678]\d{9}$/
             // 校验手机号是否合法
@@ -65,7 +64,7 @@ export default {
                 return false
             }
             // 调用登录操作
-            this.doLogin()
+            // this.doLogin()
         },
         // 执行登录操作
         doLogin(){
