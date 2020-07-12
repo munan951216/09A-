@@ -8,6 +8,7 @@
 */ 
 // 1.引入axios
 import axios from "axios";
+import store from "../store/index"
 // 2.create方法创建一个实例
 const Server =axios.create({
     baseURL:"",
@@ -15,6 +16,7 @@ const Server =axios.create({
 })
 // 3.使用实例对象，创建请求拦截器
 Server.interceptors.request.use(function(config){
+    store.commit("setLoading",true) //设置loading加载显示
     return config
 },function(error){
     return Promise.reject(error)
@@ -23,9 +25,12 @@ Server.interceptors.request.use(function(config){
 Server.interceptors.response.use(function(response){
     // 判断接口返回来的数据
     if(response.status==200){
+        setTimeout(()=>{
+            store.commit("setLoading",false) //设置loading加载隐藏
+        },2000)
         return response.data
     }
-    console.log(response)
+    // console.log(response)
     return response
 },function(error){
     return Promise.reject(error)

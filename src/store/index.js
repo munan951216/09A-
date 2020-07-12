@@ -5,11 +5,14 @@ Vue.use(Vuex)
 const store=new Vuex.Store({
     // 数据
     state:{
-
+        loading:false // loading加载显示标示符
     },
     // 同步方法
     mutations:{
-
+        // 改变loading加载标示符
+        setLoading(state,payLoad){
+            state.loading=payLoad
+        }
     },
     // 异步方法
     actions:{
