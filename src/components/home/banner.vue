@@ -22,11 +22,11 @@
              <van-icon name="coupon" size="30" color="red" />
             <p>砍价</p>
           </router-link>
-        
-          <li>
-            <van-icon name="gift-card" size="30" color="red" />
+          <router-link tag="li" to="/good/article">
+              <van-icon name="gift-card" size="30" color="red" />
             <p>专栏</p>
-          </li>
+          </router-link>
+         
         </ul>
       </nav>
       <!-- 按钮部分结束 -->

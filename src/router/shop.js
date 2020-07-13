@@ -8,6 +8,8 @@ import Me from '@/views/home/me'
 import Cutlist from '@/views/good/cutlist'
 import Cate from "@/views/good/cate"
 import Search from "@/views/good/search"
+import Article from "@/views/good/article"
+import Detial from "@/views/good/detial"
 const shop = [
     // 注册页面路由
     {
@@ -104,6 +106,23 @@ const shop = [
         meta:{
             title:"严选商城-搜索页面"
         }
+    },
+    //进入精选专栏页面
+    {
+        path:"/good/article",
+        name:"Article",
+        component:Article,
+        meta:{
+            title:"严选商城-精选专栏"
+        }
+    },
+    {
+        path:"/good/detial/:id",
+        name:"Detial",
+        component:Detial,
+        meta:{
+            title:"严选商城-专栏详情"
+        }  
     }
 ]
 export default shop
