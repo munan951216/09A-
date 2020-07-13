@@ -6,6 +6,8 @@ import Category from '@/views/home/category'
 import Cart from '@/views/home/cart'
 import Me from '@/views/home/me'
 import Cutlist from '@/views/good/cutlist'
+import Cate from "@/views/good/cate"
+import Search from "@/views/good/search"
 const shop = [
     // 注册页面路由
     {
@@ -85,5 +87,23 @@ const shop = [
             title: "严选商城-砍价页面"
         }
     },
+    // 进入分类页面
+    {
+        path:"/category/cate/:id",
+        name:"Cate",
+        component:Cate,
+        meta:{
+            title:"严选商城-分类列表"
+        }
+    },
+    // 进入搜索页面
+    {
+        path:"/category/search",
+        name:"Search",
+        component:Search,
+        meta:{
+            title:"严选商城-搜索页面"
+        }
+    }
 ]
 export default shop

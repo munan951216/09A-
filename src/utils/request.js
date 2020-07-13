@@ -27,7 +27,7 @@ Server.interceptors.response.use(function(response){
     if(response.status==200){
         setTimeout(()=>{
             store.commit("setLoading",false) //设置loading加载隐藏
-        },2000)
+        },1000)
         return response.data
     }
     // console.log(response)
