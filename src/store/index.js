@@ -11,7 +11,9 @@ const store = new Vuex.Store({
     state: {
         loading: false, // loading加载显示标示符
         cartList: [], //购物车列表
-        nums: 0 //总数量
+        nums: 0, //总数量
+        orderList:[], //订单列表
+        orderInfo:[]
     },
     // 同步方法
     mutations: {
@@ -30,8 +32,21 @@ const store = new Vuex.Store({
             state.cartList.forEach(item => {
                 tmp+=item.nums
             });
-            // 计算总
+            // 计算总数量
             state.nums=tmp
+        },
+        setOrderlist(state){
+            state.orderList=state.cartList.filter(item=>{
+                return item.checked==true
+            })
+        },
+        setOrder(state,payLoad){
+            state.orderInfo=payLoad
+        },
+        // 清空购物车
+        clear(state){
+            state.cartList=[]
+            state.orderList=[]
         }
     },
     // 异步方法
@@ -40,7 +55,14 @@ const store = new Vuex.Store({
     },
     // 计算属性
     getters: {
-
+        // 计算订单总价
+        countAmount(state){
+            let amount=0
+            state.orderList.forEach(item=>{
+                amount+=item.nums*item.price
+            })
+            return amount
+        }
     },
     // 模块化
     modules: {

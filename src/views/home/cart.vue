@@ -17,7 +17,7 @@
         </template>
       </van-card>
     </div>
-    <van-submit-bar :price="totalAmounts" button-text="提交订单" >
+    <van-submit-bar :price="totalAmounts" button-text="提交订单" @submit="goOrder">
       <van-checkbox v-model='checked'>全选</van-checkbox>
     
     </van-submit-bar>
@@ -39,6 +39,21 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    // 进入提交订单页面
+    goOrder(){
+      
+      this.$toast.loading({
+        duration:3000,
+        message:"商品准备中",
+        overlay:true
+      })
+      // 获取订单列表数据
+      this.$store.commit("setOrderlist")
+      setTimeout(()=>{
+         this.$router.push("/order")
+      },3000)
+     
     }
   },
   computed:{

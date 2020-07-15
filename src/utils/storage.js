@@ -13,7 +13,7 @@ const storage={
         localStorage.setItem(key,data)
     },
     // 获取本地存储
-    get:function(key,isJson=false){
+    get:function(key,isJson){
         // 判断参数是否合法
         if(key.length==0){
             return false

@@ -12,6 +12,8 @@ import Article from "@/views/good/article"
 import Detial from "@/views/good/detial"
 import Remonnd from "@/views/good/remonnd"
 import GoodDetail from "@/views/good/goodDetial"
+import Order from "@/views/home/order"
+import OrderPay from "@/views/home/orderPay"
 const shop = [
     // 注册页面路由
     {
@@ -143,6 +145,24 @@ const shop = [
         meta:{
             title:"严选商城-商品详情"
         }
+    },
+    // 进入提交订单页面
+    {
+        path:"/order",
+        name:"Order",
+        component:Order,
+        meta:{
+            title:"严选商城-确认订单"
+        } 
+    },
+    // 进入支付页面
+    {
+        path:"/orderpay",
+        name:"OrderPay",
+        component:OrderPay,
+        meta:{
+            title:"严选商城-支付页面"
+        } 
     }
 ]
 export default shop
