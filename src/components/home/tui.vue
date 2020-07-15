@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="jbn_tuilist">
-        <div v-for="(item,index) in tuiList" :key="index">
-          <img :src="item.pic" alt />
+          <router-link v-for="(item,index) in tuiList" :key="index" tag="div" :to="'/good/goodDetail/'+item.id">
+             <img :src="item.pic" alt />
           <p>{{ item.name}}</p>
           <p>{{ item.characteristic}}</p>
           <p>￥{{item.minPrice}}</p>
-        </div>
+          </router-link>
       </div>
     </div>
 </template>

@@ -10,6 +10,8 @@ import Cate from "@/views/good/cate"
 import Search from "@/views/good/search"
 import Article from "@/views/good/article"
 import Detial from "@/views/good/detial"
+import Remonnd from "@/views/good/remonnd"
+import GoodDetail from "@/views/good/goodDetial"
 const shop = [
     // 注册页面路由
     {
@@ -91,38 +93,56 @@ const shop = [
     },
     // 进入分类页面
     {
-        path:"/category/cate/:id",
-        name:"Cate",
-        component:Cate,
-        meta:{
-            title:"严选商城-分类列表"
+        path: "/category/cate/:id",
+        name: "Cate",
+        component: Cate,
+        meta: {
+            title: "严选商城-分类列表"
         }
     },
     // 进入搜索页面
     {
-        path:"/category/search",
-        name:"Search",
-        component:Search,
-        meta:{
-            title:"严选商城-搜索页面"
+        path: "/category/search",
+        name: "Search",
+        component: Search,
+        meta: {
+            title: "严选商城-搜索页面"
         }
     },
     //进入精选专栏页面
     {
-        path:"/good/article",
-        name:"Article",
-        component:Article,
-        meta:{
-            title:"严选商城-精选专栏"
+        path: "/good/article",
+        name: "Article",
+        component: Article,
+        meta: {
+            title: "严选商城-精选专栏"
         }
     },
     {
-        path:"/good/detial/:id",
-        name:"Detial",
-        component:Detial,
+        path: "/good/detial/:id",
+        name: "Detial",
+        component: Detial,
+        meta: {
+            title: "严选商城-专栏详情"
+        }
+    },
+    // 进入商品列表页面
+    {
+        path: "/good/remonnd",
+        name: "Remonnd",
+        component: Remonnd,
+        meta: {
+            title: "严选商城-商品列表"
+        }
+    },
+    //    进入商品详情页面
+    {
+        path:"/good/goodDetail/:id",
+        name:"GoodDetail",
+        component:GoodDetail,
         meta:{
-            title:"严选商城-专栏详情"
-        }  
+            title:"严选商城-商品详情"
+        }
     }
 ]
 export default shop

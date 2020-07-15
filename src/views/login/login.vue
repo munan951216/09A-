@@ -42,7 +42,7 @@ export default {
         // console.log(data)
         // next()
         if(data!=null){
-            next("/index")
+            next("/")
         }else{
             next()
         }
@@ -64,7 +64,7 @@ export default {
                 return false
             }
             // 调用登录操作
-            // this.doLogin()
+            this.doLogin()
         },
         // 执行登录操作
         doLogin(){
@@ -85,8 +85,9 @@ export default {
                 user.uid=res.data.uid
                 user.token=res.data.token
                 user.account=this.mobeil
-                storage.set("09A_user",user,true)
+                storage.set("09A_user",JSON.stringify(user),true)
                 this.$toast.success("恭喜你，登录成功")
+                this.$router.go(-1)  //返回上一个页面
                 
             })
         }

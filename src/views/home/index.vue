@@ -20,7 +20,9 @@
     <!-- 精选主题部分结束 -->
     <!-- 人气推荐部分开始 -->
     <div id="jbn_tui">
-      <nav>人气推荐</nav>
+      <router-link tag="nav" to="/good/remonnd">
+        人气推荐
+      </router-link>
       <!-- 人气推荐组件 -->
       <Tui :tuiList="tuiList"></Tui>
     </div>
