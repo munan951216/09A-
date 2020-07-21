@@ -1,7 +1,7 @@
 <template>
   <div>
        <van-nav-bar title="砍价列表" left-arrow @click-left="onClickLeft" />
-      <Cut :cutList="cutList"></Cut>
+      <Cut :cutList="cutList" :resultList="resultList"></Cut>
   </div>
 </template>
 
@@ -10,7 +10,8 @@ import Cut from "@/components/good/cut"
 export default {
   data() {
     return {
-      cutList: []
+      cutList: [],
+      resultList:[]
     };
   },
   created() {},
@@ -30,6 +31,8 @@ export default {
         if (res.code == 0) {
           //   this.cutList = tmp;
           this.cutList = res.data.goodsMap;
+          this.resultList = res.data.result;
+          // console.log(this.resultList)
         }
       });
     },

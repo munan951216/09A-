@@ -14,6 +14,14 @@ import Remonnd from "@/views/good/remonnd"
 import GoodDetail from "@/views/good/goodDetial"
 import Order from "@/views/home/order"
 import OrderPay from "@/views/home/orderPay"
+import Cut from "@/views/good/goodCut"
+import CutInfo from "@/views/good/cutInfo"
+// 图片懒加载页面
+import Layzload from "@/views/home/layzload"
+// 我的订单页面
+import MineOrder from "@/views/mine/order"
+// 地址页面
+import Address from "@/views/mine/addressList"
 const shop = [
     // 注册页面路由
     {
@@ -137,32 +145,84 @@ const shop = [
             title: "严选商城-商品列表"
         }
     },
+    // 进入商品砍价页面
+    {
+        path: "/good/cut/:id",
+        name: "Cut",
+        component: Cut,
+        meta: {
+            title: "严选商城-砍价页面"
+        }
+    },
     //    进入商品详情页面
     {
-        path:"/good/goodDetail/:id",
-        name:"GoodDetail",
-        component:GoodDetail,
-        meta:{
-            title:"严选商城-商品详情"
+        path: "/good/goodDetail/:id",
+        name: "GoodDetail",
+        component: GoodDetail,
+        meta: {
+            title: "严选商城-商品详情"
         }
     },
     // 进入提交订单页面
     {
-        path:"/order",
-        name:"Order",
-        component:Order,
-        meta:{
-            title:"严选商城-确认订单"
-        } 
+        path: "/order",
+        name: "Order",
+        component: Order,
+        meta: {
+            title: "严选商城-确认订单"
+        }
     },
     // 进入支付页面
     {
-        path:"/orderpay",
-        name:"OrderPay",
-        component:OrderPay,
-        meta:{
-            title:"严选商城-支付页面"
-        } 
+        path: "/orderpay",
+        name: "OrderPay",
+        component: OrderPay,
+        meta: {
+            title: "严选商城-支付页面"
+        }
+    },
+    // 图片懒加载
+    {
+        path: "/layzload",
+        name: "Layzload",
+        component: Layzload,
+        meta: {
+            title: "图片懒加载"
+        }
+    },
+    // 进入砍价商品详情页面
+    {
+        path: "/cut",
+        name: "Cut",
+        component: Cut,
+        meta: {
+            title: "严选商城——砍价页面"
+        }
+    },
+    // 进入砍价页面
+    {
+        path: "/good/cut/:id/:kjid",
+        name: "CutInfo",
+        component: CutInfo,
+        meta: {
+            title: "严选商城——砍价页面"
+        }
+    },
+    {
+        path: "/mine/order",
+        name: "MineOrder",
+        component: MineOrder,
+        meta: {
+            title: "严选商城——我的订单"
+        }
+    },
+    {
+        path: "/mine/address",
+        name: "Address",
+        component: Address,
+        meta: {
+            title: "严选商城——我的地址"
+        }
     }
 ]
 export default shop

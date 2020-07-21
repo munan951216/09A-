@@ -1,6 +1,6 @@
 <template>
     <div>
-    <div class="jbn_cutlist" v-for="(item,index) in cutList" :key="index">
+    <div class="jbn_cutlist" v-for="(item,index) in cutList" :key="index" @click="go(item.id)">
       <div class="jbn_cutLeft">
         <img :src="item.pic" alt />
       </div>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    props:["cutList"],
+    props:["cutList","resultList"],
     data() {
         return {
 
@@ -41,7 +41,22 @@ export default {
 
     },
     methods: {
+      // goDetail(id){
+      //   
+      //   console.log("123")
+      // }
+      go(id){
+        // console.log("123")
+        let kjid=0
+        this.resultList.forEach(item=> {
+          if(item.goodsId==id){
+            kjid=item.id
+          }
+        });
+        // console.log(kjid)
+        this.$router.push("/good/cut/"+id+'/'+kjid)
 
+      }
     }
 };
 </script>

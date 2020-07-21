@@ -1,27 +1,6 @@
 <template>
   <div class="jbn_box">
-    <div class="jbn_top">
-      <van-swipe class="my-swipe" :autoplay="3000">
-        <van-swipe-item v-for="(item,index) in bannerList" :key="index">
-          <img :src="item.pic" alt class="jbn_swipe" />
-        </van-swipe-item>
-      </van-swipe>
-      <p v-html="shopInfo.name"></p>
-      <ul>
-        <li>低价￥{{shopInfo.minPrice}}</li>
-        <li>原价￥{{shopInfo.originalPrice}}</li>
-        <li>库存{{shopInfo.stores}}</li>
-      </ul>
-    </div>
-    <!-- 选项卡操作 -->
-    <div class="jbn_tab">
-      <van-tabs>
-        <van-tab title="商品详情">
-          <p v-html="content"></p>
-        </van-tab>
-        <van-tab title="商品评价">商品评价</van-tab>
-      </van-tabs>
-    </div>
+    <GoodInfo :bannerList="bannerList" :content="content" :shopInfo="shopInfo"></GoodInfo>
     <!-- 商品sku信息 -->
     <van-sku
       v-model="skuShow"
@@ -34,20 +13,21 @@
     <!-- 底部加入购物车 -->
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" dot />
-      <van-goods-action-icon icon="cart-o" text="购物车" :badge="this.$store.state.nums" @click="gotoCart"/>
+      <van-goods-action-icon
+        icon="cart-o"
+        text="购物车"
+        :badge="this.$store.state.nums"
+        @click="gotoCart"
+      />
       <van-goods-action-icon icon="shop-o" text="店铺" badge="1" />
       <van-goods-action-button type="warning" text="加入购物车" @click="addCart" />
       <van-goods-action-button type="danger" text="立即购买" @click="addCart" />
     </van-goods-action>
-
-    <!-- 返回按钮 -->
-    <div class="jbn_back" @click="goBack">
-      <van-icon name="arrow-left"></van-icon>
-    </div>
   </div>
 </template>
 
 <script>
+import GoodInfo from "@/components/common/goodInfo";
 export default {
   data() {
     return {
@@ -93,7 +73,7 @@ export default {
         }
       },
       nums: 1,
-      propertyIds:"",//选中商品的sku数据
+      propertyIds: "" //选中商品的sku数据
       // sku的商品信息
     };
   },
@@ -104,11 +84,10 @@ export default {
     // 计算商品的总数量
     this.$store.commit("countCarts");
   },
+  components: {
+    GoodInfo
+  },
   methods: {
-    //   返回上一个页面
-    goBack() {
-      this.$router.go(-1);
-    },
     getDetail() {
       this.$axios({
         url: "https://api.it120.cc/small4/shop/goods/detail",
@@ -166,9 +145,9 @@ export default {
       this.sku.list = list;
     },
     // 切换商品规格时触发
-    selectedSku(data){
-      console.log(data)
-      this.propertyIds=`${data.skuValue.propertyId}:${data.skuValue.id}`
+    selectedSku(data) {
+      console.log(data);
+      this.propertyIds = `${data.skuValue.propertyId}:${data.skuValue.id}`;
     },
     // 加入购物车
     cart() {
@@ -201,8 +180,8 @@ export default {
         object.checked = true;
         // 先判断
         cartList.push(object);
-      }else{
-        cartList[index].nums+=this.nums  //数量的自增
+      } else {
+        cartList[index].nums += this.nums; //数量的自增
       }
 
       this.skuShow = false; //控制底部弹框的隐藏
@@ -211,8 +190,8 @@ export default {
       this.$store.commit("countCarts");
     },
     // 进入购物车页面
-    gotoCart(){
-      this.$router.push("/cart")
+    gotoCart() {
+      this.$router.push("/cart");
     }
   }
 };
@@ -220,51 +199,5 @@ export default {
 <style lang="scss" >
 .jbn_box {
   background: #f4f4f4;
-}
-.jbn_top {
-  width: 100%;
-  margin-bottom: 0.4rem;
-  background: #fff;
-  p {
-    width: 100%;
-    padding: 0.2rem;
-    box-sizing: border-box;
-  }
-  ul {
-    width: 100%;
-    display: flex;
-    padding: 0rem 0.2rem;
-    box-sizing: border-box;
-    justify-content: space-between;
-    color: #ccc;
-    li:nth-child(1) {
-      color: red;
-    }
-  }
-}
-.jbn_swipe {
-  width: 100%;
-}
-.jbn_tab {
-  width: 100%;
-  p {
-    padding: 0.2rem;
-    box-sizing: border-box;
-    width: 100% !important;
-  }
-  img {
-    width: 100% !important;
-  }
-}
-.jbn_back {
-  position: fixed;
-  top: 0.5rem;
-  left: 0.5rem;
-  width: 1rem;
-  height: 1rem;
-  text-align: center;
-  line-height: 1rem;
-  background: #fff;
-  border-radius: 50%;
 }
 </style>
